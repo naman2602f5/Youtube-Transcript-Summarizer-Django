@@ -1,7 +1,9 @@
 from django.urls import path
-from . import views
+from Summarize.views import FetchAndStoreVideoView, SummarizeTextView, GetSummaryView, DeleteSummaryView
 
 urlpatterns = [
-    path('', views.hello_world, name='index'),
-    path('api/summarize', views.get_summarized_text, name='get_summarized_text'),
+    path('fetch-video/', FetchAndStoreVideoView.as_view(), name='fetch_video'),
+    path('api/summarize/', SummarizeTextView.as_view(), name='summarize_text'),
+    path('get-summary/<int:summary_id>/', GetSummaryView.as_view(), name='get_summary'),
+    path('delete-summary/<int:summary_id>/', DeleteSummaryView.as_view(), name='delete_summary'),
 ]
